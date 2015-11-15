@@ -15,7 +15,7 @@ public class Wall extends BoardElements {
 	}
 
 	@Override
-	void updatePosition() {
+	public void updatePosition() {
 		// TODO Auto-generated method stub
 	}
 

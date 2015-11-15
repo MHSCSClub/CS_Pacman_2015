@@ -24,7 +24,7 @@ public class Board extends JPanel{
 					elements[z][i] = new Wall(i*20, z*20, Color.BLUE, 20);
 				}
 				else if(board[z][i] == 3){
-					elements[z][i] = new Pacman(i*20 + 2, z*20+2, 15, Color.YELLOW);
+					elements[z][i] = new Pacman(i*20, z*20, 15, Color.YELLOW);
 					manager.addKeyEventDispatcher((Pacman) elements[z][i]);
 				}
 				else{

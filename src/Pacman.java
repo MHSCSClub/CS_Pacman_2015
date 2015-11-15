@@ -17,21 +17,23 @@ public class Pacman extends BoardElements implements KeyEventDispatcher{
 	}
 	
 	@Override
-	void updatePosition() {
+	public void updatePosition() {
 		if (key == 40){
 			this.y = (this.y + speed) % 640;
 		}else if(key == 38){
-			this.y = Math.abs((this.y - speed) % 640);
+			this.y = ((this.y - speed) % 640 > (-1 * radius))? (this.y - speed) % 640: 640;
 		}else if(key == 37){
-			this.x =Math.abs((this.x - speed) % 640);
+			this.x = ((this.x - speed) % 640 > (-1 * radius))? (this.x - speed) % 640: 640;
 		}else if(key == 39){
 			this.x = (this.x + speed) % 640;
 		}
 			
 	}
 	
+	
+	
 	@Override
-	void paintComponent(Graphics g) {
+	public void paintComponent(Graphics g) {
 		g.setColor(color);
 		g.fillOval(x, y, radius, radius);
 		
