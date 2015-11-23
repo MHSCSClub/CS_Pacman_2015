@@ -5,7 +5,7 @@ import javax.swing.JPanel;
 
 public class Board extends JPanel{ 
 	private int board [][];
-	private BoardElements elements[][];
+	private BoardElements elements[][]; //change to Arraylist
 	private Color background;
 	KeyboardFocusManager manager;
 	
@@ -17,7 +17,7 @@ public class Board extends JPanel{
 		
 		setUp();
 	}
-	public void setUp(){
+	public void setUp(){ 
 		for(int i = 0; i<board.length; i++){
 			for(int z = 0; z<board[i].length; z++){
 				if(board[z][i] == 1){
@@ -27,8 +27,11 @@ public class Board extends JPanel{
 					elements[z][i] = new Pacman(i*20, z*20, 15, Color.YELLOW);
 					manager.addKeyEventDispatcher((Pacman) elements[z][i]);
 				}
+				else if(board[z][i] == 0){
+					elements[z][i] = new Dots(new Point(i*20, z*20), Color.WHITE);
+				}
 				else{
-					elements[z][i] = new Wall(i*0, z*0, Color.BLUE, 0);
+					elements[z][i] = new Wall(i*0, z*0, Color.BLUE, 0); //temp until we make into an array list
 				}
 			}
 		}

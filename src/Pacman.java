@@ -9,6 +9,12 @@ public class Pacman extends BoardElements implements KeyEventDispatcher{
 	private int key;
 	private static int speed = 1;
 	
+	public Pacman(Point position,int radius, Color color) {
+		super("Pacman", position, color);
+		this.radius = radius;
+		this.key = 0;
+		
+	}
 	public Pacman(int x, int y,int radius, Color color) {
 		super("Pacman", x, y, color);
 		this.radius = radius;
@@ -16,16 +22,17 @@ public class Pacman extends BoardElements implements KeyEventDispatcher{
 		
 	}
 	
+	//updates position and make sure that it wraps to other side of page
 	@Override
 	public void updatePosition() {
 		if (key == 40){
-			this.y = (this.y + speed) % 640;
+			position.setY((position.getY() + speed) % 640);  
 		}else if(key == 38){
-			this.y = ((this.y - speed) % 640 > (-1 * radius))? (this.y - speed) % 640: 640;
+			position.setY(((position.getY() - speed) % 640 > (-1 * radius))? (position.getY() - speed) % 640: 640);  
 		}else if(key == 37){
-			this.x = ((this.x - speed) % 640 > (-1 * radius))? (this.x - speed) % 640: 640;
+			position.setX(((position.getX() - speed) % 640 > (-1 * radius))? (position.getX() - speed) % 640: 640);
 		}else if(key == 39){
-			this.x = (this.x + speed) % 640;
+			position.setX((position.getX() + speed) % 640);
 		}
 			
 	}
@@ -35,7 +42,7 @@ public class Pacman extends BoardElements implements KeyEventDispatcher{
 	@Override
 	public void paintComponent(Graphics g) {
 		g.setColor(color);
-		g.fillOval(x, y, radius, radius);
+		g.fillOval(position.getX(), position.getY(), radius, radius);
 		
 	}
 	

@@ -11,7 +11,7 @@ public class Wall extends BoardElements {
 	@Override
 	public void paintComponent(Graphics g) {
 		g.setColor(this.color);
-		g.drawRect(x, y, size, size);
+		g.drawRect(position.getX(), position.getY(), size, size);
 	}
 
 	@Override
